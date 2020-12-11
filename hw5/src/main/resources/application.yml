@@ -1,0 +1,38 @@
+server:
+  port: 8002
+
+spring:
+  datasource:
+    url: jdbc:h2:~/test&useSSL=false
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 123456
+
+  jpa:
+    database: h2
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  h2:
+    console:
+      path: /h2-console
+      enabled: true
+
+  thymeleaf:
+    cache: false
+    servlet:
+      content-type: text/html
+    encoding: utf-8
+    mode: HTML5
+    suffix: .html
+    prefix: classpath:/templates/
+
+  mvc:
+    static-path-pattern: /static/**
+
+  resources:
+    static-locations: classpath:/static/
+
+
+

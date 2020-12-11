@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add</title>
+    <link rel="stylesheet" href="../static/add/addStyle.css">
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+    <script src="../static/add/addJs.js" defer></script>
+</head>
+<body>
+<div class="header">
+    <div>
+        <h1>添加联系人</h1>
+        <p>作者：wtl</p>
+    </div>
+</div>
+<div class="body">
+    <form action="/checkadd" method="post" th:object="${cont}">
+        <table class="tb">
+            <tbody>
+            <tr>
+                <td class="td-left">姓名</td>
+                <td class="td-right"><input type="text" name="name" id="u-name" th:field="*{contactname}" pattern="[\u4e00-\u9fa5a-zA-Z]{2,}" required></td>
+                <td id="format-name">中文或英文</td>
+            </tr>
+            <tr>
+                <td class="td-left">电话</td>
+                <td class="td-right"><input type="text" name="phone" id="u-phone" th:field="*{tel}" pattern="[0-9]*" required></td>
+                <td ><p id="format-phone">全数字</p></td>
+
+            </tr>
+            <tr>
+                <td class="td-left">邮箱</td>
+                <td class="td-right"><input type="text" name="emial" id="u-email" th:field="*{email}"  pattern=".+@.+" required></td>
+                <td id="format-email">包含@后缀</td>
+            </tr>
+            <tr>
+                <td class="td-left">住址</td>
+                <td class="td-right"><input type="text" name="address" id="u-address" th:field="*{addr}"  pattern=".+" required></td>
+                <td id="format-address">请按格式填写</td>
+            </tr>
+            <tr>
+                <td class="td-left">QQ号</td>
+                <td class="td-right"><input type="text" name="qq" id="u-qq" th:field="*{qq}" pattern="[0-9]{7,10}" required></td>
+                <td id="format-qq">全数字，长度7-10</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="bottom">
+            <input class="save" type="submit" value="保存">
+        </div>
+    </form>
+</div>
+</body>
+</html>

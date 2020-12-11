@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table</title>
+    <link rel="stylesheet" href="../static/main/tableStyle.css"/>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+    <script src="../static/main/mainjs.js"></script>
+</head>
+<body>
+<div class="header">
+    <div>
+        <h1>通讯录</h1>
+        <p>作者：wtl</p>
+    </div>
+</div>
+<div>
+    <div class="search">
+        <input type="text" value="姓名">
+        <input type="text">
+        <button>查询</button>
+    </div>
+    <div class="div-table">
+        <table class="tb">
+            <thead>
+            <tr>
+                <td>姓名</td>
+                <td>电话</td>
+                <td>邮箱</td>
+                <td>地址</td>
+                <td>QQ</td>
+                <td>
+                    <button class="add-btn" onclick="add()">添加</button>
+                </td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="info:${table.getTableinfo()}">
+                <td th:text="${info.getContactname()}"></td>
+                <td th:text="${info.getTel()}"></td>
+                <td th:text="${info.getEmail()}"></td>
+                <td th:text="${info.getAddr()}"></td>
+                <td th:text="${info.getQq()}"></td>
+                <td>
+                    <button class="edit" onclick="alter(this)">编辑</button>
+                    <button class="delete" onclick="del(this)">删除</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
